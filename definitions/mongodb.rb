@@ -146,7 +146,7 @@ define :mongodb_instance,
     )
     helpers MongoDBConfigHelpers
     mode '0644'
-    notifies new_resource.reload_action, "service[#{new_resource.name}]"
+    notifies new_resource.reload_action, "service[#{new_resource.name}]", :immediate
   end
 
   # log dir [make sure it exists]
