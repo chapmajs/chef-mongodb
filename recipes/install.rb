@@ -31,6 +31,7 @@ if node['mongodb']['apt_repo'] == 'ubuntu-upstart'
   puts "Dropped init file at: #{node['mongodb']['default_init_name']}.conf"
   puts "-" * 80
   mode = '0644'
+  notifies :restart, "service[mongod]", :immediately
 else
   init_file = File.join(node['mongodb']['init_dir'], "#{node['mongodb']['default_init_name']}")
   mode = '0755'
